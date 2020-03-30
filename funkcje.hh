@@ -17,3 +17,11 @@ void wpisz(Zespolona &x)
     cin>>x.im;
 
 }
+int wybor(int wybierz)
+{
+
+    cout<<"wybierz\n dodawanie : 1\n odejmowanie : 2\n iloczyn : 3\n dzielenie : 4\n porownanie : 5\n sprzenzenie : 6\nzmiana znaku : 7"<<endl;
+ cout<<"operator += : 8\n operator *= : 9\n operator ++i : 10\n operator i++ : 11\n koniec : 0"<<endl;
+ cin>>wybierz;//wpowadzenie potrebujencego operatora
+ return wybierz;
+}

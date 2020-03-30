@@ -1,3 +1,4 @@
+
 /*
 Dodawanie liczb zespolonych:
 Argumenty:
@@ -62,7 +63,7 @@ Zespolona  operator * (Zespolona  Skl1,  Zespolona  Skl2)
   return Wynik;
 }
 /*
-Dodawanie liczb zespolonych:
+ModulDoKwadratu liczby zespolonej:
 Argumenty:
 * Skl1 - liczba zespolona;
 Zwraca:
@@ -74,6 +75,13 @@ float ModulDoKwadratu(Zespolona Skl)
   Wynik=Skl.re*Skl.re+Skl.im*Skl.im;
   return Wynik;
 }
+float Modul(Zespolona Skl)
+{
+  float Wynik;
+  Wynik=Skl.re*Skl.re+Skl.im*Skl.im;
+  return sqrt(Wynik);
+}
+
 /*
 Dzilenie liczb zespolonych:
 Argumenty:
@@ -93,10 +101,14 @@ Zespolona  operator / (Zespolona  Skl1,  Zespolona  Skl2)
   return Wynik;
 }
 /*
-Porownanie liczb zespolonych:
+Sprawdzanie prawidlowej odpowiedzi:
 Argumenty:
-* Skl1 - pierwszy skladnik porownania;
-* Skl2 - drugi skladnik porownania
+* Skl1 - liczba zespolona wprowadzona przez uzytkownika;
+* Skl2 - prawidlowa wartosc
+Wynik:
+Przy prawidlowo wprowadzonej liczbie zespolonej wyswietli sie "Prawidlowo"
+Przy prawidlowo wprowadzonej liczbie zespolonej wyswietli sie "Wystapil Blad 
+Prawidlowa odpowiedz  : Skl2"
 */
 void Porownanie(Zespolona  Skl1,  Zespolona  Skl2)
 {
@@ -111,6 +123,12 @@ wyswietl(Skl2);
   }
   
 }
+/*
+Porownanie liczb zespolonych:
+Argumenty:
+* Skl1 - pierwszy skladnik porownania;
+* Skl2 - drugi skladnik porownania
+*/
 void  operator == (Zespolona  Skl1,  Zespolona  Skl2)
 {
   if(Skl1.re == Skl2.re){
@@ -136,4 +154,73 @@ Zespolona Wynik;
 Wynik.re = -Skl1.re;
 Wynik.im = -Skl1.im;
 return Wynik;
+}
+/*
+Dodawanie liczb zespolonych:
+Argumenty:
+* Skl1 - pierwszy skladnik dodawania;
+* Skl2 - drugi skladnik dodawania
+Wynik:
+    Zmiana wartosci Skl1 na Skl1+Skl2
+*/
+void operator +=(Zespolona &Skl1, Zespolona Skl2)
+{
+Skl1.re = Skl1.re + Skl2.re;
+Skl1.im = Skl1.im + Skl2.im;
+}
+/*
+Iloczyn liczb zespolonych:
+Argumenty:
+* Skl1 - pierwszy skladnik iloczynu
+* Skl2 - drugi skladnik iloczynu
+Wynik:
+    Zmiana wartosci Skl1 na Skl1*Skl2
+*/
+void operator *=(Zespolona& Skl1, Zespolona Skl2)
+{
+Skl1 = Skl1 * Skl2;
+}
+/*
+Preikrementacja liczby zespolonej:
+Argument:
+Skl1 : liczba zespolona
+Wynik:
+Zwieksza czesc rzeczywista i urojona o jeden
+*/
+void operator ++(Zespolona & Skl1)
+{
+  Skl1.re= Skl1.re +1;
+  Skl1.im= Skl1.im +1;
+}
+/*
+Postikrementacja liczby zespolonej:
+Argument:
+Skl1 : liczba zespolona
+Wynik:
+Zwieksza czesc rzeczywista i urojona o jeden
+*/
+void operator ++(Zespolona & Skl1,int)
+{
+  Skl1.re= Skl1.re +1;
+  Skl1.im= Skl1.im +1;
+}
+/*
+Znalezenie argumentu liczby zespolonej:
+Argument funkcji:
+Skl : liczba zespolona
+Zwraca:
+Znaczenie argumentu w radianach
+*/
+double Argument(Zespolona Skl)
+{
+  double modul,Re;
+  modul = Modul(Skl);
+  Re= Skl.re/modul;
+  if (Skl.re>0)
+return acos(Re);
+else
+{
+ return PI - acos(Re);
+}
+
 }

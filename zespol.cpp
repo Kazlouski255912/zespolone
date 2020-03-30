@@ -2,6 +2,8 @@
 #include <cstring>
 #include <cassert>
 #include<iomanip>
+#include <cmath>
+#define PI 3.14159265
 using namespace std;
 #include"struct.hh"
 #include"funkcje.hh"
@@ -16,11 +18,10 @@ int main(int argc, char *argv[])
  wpisz(z1);//wywolanie funkcji wpisz
  wpisz(z2);//wywolanie funkcji wpisz
 
- int wybor;
+ int wybierz;
  do{
- cout<<"wybierz\n dodawanie : 1\n odejmowanie : 2\n iloczyn : 3\n dzielenie : 4\n porownanie : 5\n sprzenzenie : 6\nzmiana znaku : 7\n koniec : 0"<<endl;
- cin>>wybor;//wpowadzenie potrebujencego operatora
- switch (wybor)
+ wybierz = wybor(wybierz);
+ switch (wybierz)
  {
   case 1: z3 = z1 + z2;//wywolanie operatora dodawania
   wyswietl(z1);cout<<"+"<<endl;wyswietl(z2);
@@ -94,12 +95,33 @@ int main(int argc, char *argv[])
    else 
    cout<<"wystapil blad  ";
       break;
+      case 8:
+      z1+=z2;
+      wyswietl(z1);
+      break;
+      case 9:
+      z1*=z2;
+      wyswietl(z1);
+      break;
+      case 10:
+      ++z1;
+      wyswietl(z1);
+      break;
+      case 11:
+      z1++;
+      wyswietl(z1);
+      break;
+      case 12:
+      double Arg;
+      Arg= Argument(z1);
+      cout<<"Argument  : "<<Arg<< "radian"<<endl;
+      break;
  default:
  continue;
      break;
  }
- }while(wybor != 0);//petlia dziala do momentu poki nie bedzie wprowadzone 0
-cout<<"Nacisnij  0  zeby zakonczyc"<<endl;
+ }while(wybierz != 0);//petlia dziala do momentu poki nie bedzie wprowadzone 0
+cout<<"Nacisnij  0  zeby zakonczyc, inna liczba przedluza "<<endl;
 cin>>n;
     }
     }
